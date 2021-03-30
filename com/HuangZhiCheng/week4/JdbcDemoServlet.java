@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Writer;
 import java.sql.*;
 
 @WebServlet(name = "JdbcDemoServlet",
@@ -28,11 +29,18 @@ public class JdbcDemoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("--> i am in doget");
         String sql="select * from usertable";
+        Writer writer = response.getWriter();
         try {
             PreparedStatement pre=con.prepareStatement(sql);
             ResultSet resultSet = pre.executeQuery();
             while(resultSet.next()){
-                System.out.print(resultSet.getInt("id"));
+                writer.write(resultSet.getInt("id")+" ");
+                writer.write(resultSet.getString("username")+" ");
+                writer.write(resultSet.getString("password")+" ");
+                writer.write(resultSet.getString("email")+" ");
+                writer.write(resultSet.getString("gender")+" ");
+                writer.write(String.valueOf(resultSet.getDate("birthdate")));
+                writer.write("\n");
             }
 
         } catch (SQLException e) {
