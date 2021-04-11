@@ -57,17 +57,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        ServletConfig stc = getServletConfig();
-        String driver = stc.getInitParameter("driver");
-        String url = stc.getInitParameter("url");
-        String user = stc.getInitParameter("user");
-        String password = stc.getInitParameter("password");
-        try {
-            Class.forName(driver);
-            con = DriverManager.getConnection(url,user,password);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        getServletContext().setAttribute("con",con);
+        Connection con =(Connection) getServletContext().getAttribute("con");
     }
 }
