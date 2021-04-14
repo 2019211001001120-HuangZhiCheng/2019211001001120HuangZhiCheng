@@ -34,6 +34,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        Connection con =(Connection) getServletContext().getAttribute("con");
+         con =(Connection) getServletContext().getAttribute("con");
     }
 }
