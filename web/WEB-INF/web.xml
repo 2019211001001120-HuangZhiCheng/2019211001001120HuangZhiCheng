@@ -6,17 +6,70 @@
     <servlet>
         <servlet-name>homework</servlet-name>
         <servlet-class>com.HuangZhiCheng.week2.homework</servlet-class>
+
     </servlet>
 
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.HuangZhiCheng.week3.RegisterServlet</servlet-class>
-    </servlet>
+
 
     <servlet>
         <servlet-name>LifeCycleServlet</servlet-name>
         <servlet-class>com.HuangZhiCheng.week3.LifeCycleServlet</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.HuangZhiCheng.week4.ConfigDemoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JdbcDemoServlet</servlet-name>
+        <servlet-class>com.HuangZhiCheng.week4.JdbcDemoServlet</servlet-class>
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.mysql.cj.jdbc.Driver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:mysql://127.0.0.1:3306/mytestdb?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</param-value>
+        </init-param>
+
+        <init-param>
+
+            <param-name>user</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>root</param-value>
+        </init-param>
+
+    </servlet>
+
+    <context-param><!--和init-param的区别就是这个是定义全局都可以用，而init仅能在特定的class类中使用-->
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://127.0.0.1:3306/mytestdb?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</param-value>
+    </context-param>
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
+    <servlet-mapping>
+        <servlet-name>JdbcDemoServlet</servlet-name>
+        <url-pattern>/Jdbc</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>homework</servlet-name>
@@ -28,8 +81,24 @@
         <url-pattern>/life</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>com.HuangZhiCheng.week6.SearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>com.HuangZhiCheng.week6.JDBCServletContextLisener</listener-class>
+    </listener>
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+
+
 </web-app>
