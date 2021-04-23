@@ -14,14 +14,9 @@ public class UserDao implements IUerDao{
 
     @Override
     public boolean saveUser(Connection con, User user) throws SQLException {
-        String sql = "insert into usertable values(?,?,?,?,?,?) ";
+        String sql = "update usertable set username=?,password=?,email=?,gender=?,birthdate=? where id=?";
         PreparedStatement pre = con.prepareStatement(sql);
-        pre.setInt(1,user.getId());
-        pre.setString(2,user.getUsername());
-        pre.setString(3,user.getPassword());
-        pre.setString(4,user.getEmail());
-        pre.setString(5,user.getGender());
-        pre.setDate(6, (java.sql.Date) user.getBirthDate());
+
         pre.executeUpdate();
         return true;
     }
@@ -36,14 +31,15 @@ public class UserDao implements IUerDao{
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql = "insert into usertable values(?,?,?,?,?,?) ";
+        //用id查找并且更新数据库中数据
+        String sql = "update usertable set username=?,password=?,email=?,gender=?,birthDate=? where id=?";
         PreparedStatement pre = con.prepareStatement(sql);
-        pre.setInt(1,user.getId());
-        pre.setString(2,user.getUsername());
-        pre.setString(3,user.getPassword());
-        pre.setString(4,user.getEmail());
-        pre.setString(5,user.getGender());
-        pre.setDate(6, (java.sql.Date) user.getBirthDate());
+        pre.setString(1,user.getUsername());
+        pre.setString(2,user.getPassword());
+        pre.setString(3,user.getEmail());
+        pre.setString(4,user.getGender());
+        pre.setDate(5,(java.sql.Date) user.getBirthDate());
+        pre.setInt(6,user.getId());
         return pre.executeUpdate();
     }
 
