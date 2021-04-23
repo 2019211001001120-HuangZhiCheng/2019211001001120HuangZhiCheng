@@ -11,6 +11,7 @@
 <head>
     <title>Title</title>
 </head>
+
 <body>
 <h1>User Info</h1>
 
@@ -22,7 +23,8 @@
     <tr><td>gender:${user.gender}</td></tr>
     <tr><td>birthdate:${user.birthDate}</td></tr>
 </table>
-
+<a href="/WEB-INF/views/updateUser.jsp">update</a>
+<!--前端界面不能直接访问web-inf下的文件只能通过后台转发请求访问-->
 </body>
 </html>
 <%@include file="footer.jsp"%>
