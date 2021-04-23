@@ -21,10 +21,31 @@
         response.getWriter().write("<h3>"+request.getAttribute("message")+"</h3>");
     }
 %>
+<%
+    Cookie[] allCookies = request.getCookies();
+    String username="",password="",rememberMeVale="";
+    if(allCookies!=null){
+        for(Cookie c:allCookies){
+            if(c.getName().equals("cUsername")){
+                username = c.getValue();
+            }
+            if(c.getName().equals("cPassword")){
+                password = c.getValue();
+            }
 
+            if(c.getName().equals("cRememberMe")){
+                rememberMeVale = c.getValue();
+            }
+
+        }
+
+    }
+
+%>
 <form action="login" method="post">
-    UserName:<input type="text" name="username"><br/>
-    Password:<input type="text" name="password"><br/>
+    UserName:<input type="text" name="username"value="<%=username%>"><br/>
+    Password:<input type="text" name="password" value="<%=password%>"><br/>
+    <input type="checkbox"name="rememberMe" value="1" <%=rememberMeVale.equals("1")?"checked":""%>checked/>Rememberme<br>
     <input type="submit" value="Login">
 </form>
 
