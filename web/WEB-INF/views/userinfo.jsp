@@ -16,12 +16,12 @@
 <h1>User Info</h1>
 
 <table><!--Use EL to do-->
-    <tr><td>id:${user.id}</td></tr>
-    <tr><td>username:${user.username}</td></tr>
-    <tr><td>password:${user.password}</td></tr>
-    <tr><td>email:${user.email}</td></tr>
-    <tr><td>gender:${user.gender}</td></tr>
-    <tr><td>birthdate:${user.birthDate}</td></tr>
+    <tr><td>id:${sessionScope.id}</td></tr>
+    <tr><td>username:${sessionScope.username}</td></tr>
+    <tr><td>password:${sessionScope.password}</td></tr>
+    <tr><td>email:${sessionScope.email}</td></tr>
+    <tr><td>gender:${sessionScope.gender}</td></tr>
+    <tr><td>birthdate:${sessionScope.birthDate}</td></tr>
 </table>
 <a href="/WEB-INF/views/updateUser.jsp">update</a>
 <!--前端界面不能直接访问web-inf下的文件只能通过后台转发请求访问-->
