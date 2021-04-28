@@ -23,7 +23,7 @@
     <tr><td>gender:${sessionScope.user.gender}</td></tr>
     <tr><td>birthdate:${sessionScope.user.birthDate}</td></tr>
 </table>
-<a href="<%request.getRequestDispatcher("/WEB-INF/views/updateUser.jsp").forward(request,response);%>">update</a>
+<a href="updateUser">update</a>
 <!--前端界面不能直接访问web-inf下的文件只能通过后台转发请求访问-->
 
 </body>
