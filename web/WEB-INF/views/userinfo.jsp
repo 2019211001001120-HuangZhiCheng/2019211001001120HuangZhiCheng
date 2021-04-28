@@ -16,15 +16,16 @@
 <h1>User Info</h1>
 
 <table><!--Use EL to do-->
-    <tr><td>id:${sessionScope.id}</td></tr>
-    <tr><td>username:${sessionScope.username}</td></tr>
-    <tr><td>password:${sessionScope.password}</td></tr>
-    <tr><td>email:${sessionScope.email}</td></tr>
-    <tr><td>gender:${sessionScope.gender}</td></tr>
-    <tr><td>birthdate:${sessionScope.birthDate}</td></tr>
+    <tr><td>id:${sessionScope.user.id}</td></tr>
+    <tr><td>username:${sessionScope.user.username}</td></tr>
+    <tr><td>password:${sessionScope.user.password}</td></tr>
+    <tr><td>email:${sessionScope.user.email}</td></tr>
+    <tr><td>gender:${sessionScope.user.gender}</td></tr>
+    <tr><td>birthdate:${sessionScope.user.birthDate}</td></tr>
 </table>
-<a href="/WEB-INF/views/updateUser.jsp">update</a>
+<a href="<%request.getRequestDispatcher("/WEB-INF/views/updateUser.jsp").forward(request,response);%>">update</a>
 <!--前端界面不能直接访问web-inf下的文件只能通过后台转发请求访问-->
+
 </body>
 </html>
 <%@include file="footer.jsp"%>
