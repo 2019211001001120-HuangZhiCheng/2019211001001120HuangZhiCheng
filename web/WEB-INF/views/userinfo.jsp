@@ -11,16 +11,26 @@
 <head>
     <title>Title</title>
 </head>
+
 <body>
 <h1>User Info</h1>
+<%--  <%
+    Cookie []allCookies = request.getCookies();
+    for(Cookie cookie:allCookies){
+        out.print("<br/>"+cookie.getName()+"---"+cookie.getValue());
+    }
+%>   --%>
+
 <table><!--Use EL to do-->
-    <tr><td>id:${id}</td></tr>
-    <tr><td>username:${username}</td></tr>
-    <tr><td>password:${password}</td></tr>
-    <tr><td>email:${email}</td></tr>
-    <tr><td>gender:${gender}</td></tr>
-    <tr><td>birthdate:${birthdate}</td></tr>
+    <tr><td>id:${sessionScope.user.id}</td></tr>
+    <tr><td>username:${sessionScope.user.username}</td></tr>
+    <tr><td>password:${sessionScope.user.password}</td></tr>
+    <tr><td>email:${sessionScope.user.email}</td></tr>
+    <tr><td>gender:${sessionScope.user.gender}</td></tr>
+    <tr><td>birthdate:${sessionScope.user.birthDate}</td></tr>
 </table>
+<a href="updateUser">update</a>
+<!--前端界面不能直接访问web-inf下的文件只能通过后台转发请求访问-->
 
 </body>
 </html>
