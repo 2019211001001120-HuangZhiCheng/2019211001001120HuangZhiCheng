@@ -25,6 +25,10 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = userDao.findByUsernamePassword(con,username,password);
             if(user!=null){
+//                Cookie cookie = new Cookie("sessionid",""+user.getId());
+//                cookie.setMaxAge(10*60);
+//                response.addCookie(cookie);
+
                 String rememberMe = request.getParameter("rememberMe");
                 if(rememberMe.equals("1")&&rememberMe!=null){
                     Cookie usernameCookie = new Cookie("cUsername",user.getUsername());
@@ -36,7 +40,6 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(usernameCookie);
                     response.addCookie(passwordCookie);
                     response.addCookie(rememberMeCookie);
-
                 }
 
                 HttpSession session = request.getSession();
