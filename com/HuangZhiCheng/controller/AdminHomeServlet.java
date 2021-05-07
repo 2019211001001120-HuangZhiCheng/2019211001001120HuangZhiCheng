@@ -16,7 +16,7 @@ import java.io.IOException;
  * @Description: ${PACKAGE_NAME}
  * @version: 1.0
  */
-@WebServlet(name = "AdminHomeServlet")
+@WebServlet(name = "AdminHomeServlet",value = "/admin/home")
 public class AdminHomeServlet extends HttpServlet {
     private static final long serialVersionUID = -4061622085883034698L;
 
