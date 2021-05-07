@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 //                response.addCookie(cookie);
 
                 String rememberMe = request.getParameter("rememberMe");
-                if(rememberMe.equals("1")&&rememberMe!=null){
+                if("1".equals(rememberMe)&&rememberMe!=null){
                     Cookie usernameCookie = new Cookie("cUsername",user.getUsername());
                     Cookie passwordCookie = new Cookie("cPassword",user.getPassword());
                     Cookie rememberMeCookie = new Cookie("cRememberMe",rememberMe);
