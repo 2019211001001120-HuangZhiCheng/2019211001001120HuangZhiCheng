@@ -11,7 +11,7 @@ public interface IUerDao {
     boolean saveUser(Connection con, User user) throws SQLException;
     int deleteUser(Connection con,User user) throws SQLException;
     int updateUser(Connection con,User user) throws SQLException;
-
+    int insertUser(Connection con,User user) throws SQLException;
     User findById(Connection con,Integer id) throws SQLException;
     User findByUsernamePassword(Connection con,String username,String password) throws SQLException;
     List<User> findByUsername(Connection con,String username) throws SQLException;

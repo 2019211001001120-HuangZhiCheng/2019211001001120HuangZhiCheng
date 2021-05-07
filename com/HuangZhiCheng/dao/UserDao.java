@@ -44,6 +44,19 @@ public class UserDao implements IUerDao{
     }
 
     @Override
+    public int insertUser(Connection con, User user) throws SQLException {
+        String sql = "insert into usertable values(null,?,?,?,?,?)";
+        PreparedStatement pre = con.prepareStatement(sql);
+        pre.setString(1,user.getUsername());
+        pre.setString(2,user.getPassword());
+        pre.setString(3,user.getEmail());
+        pre.setString(4,user.getGender());
+        pre.setObject(5,user.getBirthDate());
+        return pre.executeUpdate();
+
+    }
+
+    @Override
     public User findById(Connection con, Integer id) throws SQLException {
         String sql = "select * from usertable where id=?";
         PreparedStatement pre = con.prepareStatement(sql);
