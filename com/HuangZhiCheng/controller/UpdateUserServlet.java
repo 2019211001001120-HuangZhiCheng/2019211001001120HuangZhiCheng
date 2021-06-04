@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -49,11 +50,15 @@ public class UpdateUserServlet extends HttpServlet {
         user.setPassword(password);
         UserDao userDao = new UserDao();
         try {
-            userDao.updateUser(con,user);
+            int n =userDao.updateUser(con,user);
+            User updatedUser = userDao.findById(con,id);
+            HttpSession session = request.getSession();
+            session.removeAttribute("user");
+            session.setAttribute("user",updatedUser);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+        request.getRequestDispatcher("accountDetails").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
