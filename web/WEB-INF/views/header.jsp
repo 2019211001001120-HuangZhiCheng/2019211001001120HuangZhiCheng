@@ -138,10 +138,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </li> 
 								
 								<!--<li><a href="404.html">404</a></li>-->
-								<li><a href="<%=basePath%>contactUs">Contact</a></li>
+								<li><a href="http://api.map.baidu.com/api?key=&v=1.1&services=true">Contact</a></li>
 							</ul>
 						</div>
 					</div>
+
 					<div class="col-sm-3">
 					<form method="get" target='_blank' action="<%=basePath%>search" style="width: 426px; ">
 							<input type="text" name="txt" placeholder="search"/>
